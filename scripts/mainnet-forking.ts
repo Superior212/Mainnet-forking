@@ -63,7 +63,7 @@ const main = async () => {
   const usdcBalAfter = await USDC.balanceOf(impersonatedSigner.address);
   const daiBalAfter = await DAI.balanceOf(impersonatedSigner.address);
 
-  console.log("=================================");
+  console.log("===========================================");
 
   // Log the updated balances
 
