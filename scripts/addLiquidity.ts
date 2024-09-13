@@ -37,10 +37,6 @@ const main = async () => {
   const deadline = Math.floor(Date.now() / 1000) + 60 * 10;
   // This sets a deadline 10 minutes from now for the transaction to be processed
 
-  // Check LP token balance before and after the transaction
-  const lpBalBefore = await IERC20.balanceOf(impersonatedSigner.address);
-  console.log("LP Token Balance before:", Number(lpBalBefore));
-
   const USDC = await ethers.getContractAt(
     "IERC20",
     USDCAddress,
@@ -70,6 +66,14 @@ const main = async () => {
   console.log("DAIBalance before adding liquidity:", Number(daiBalBefore));
   // This logs the balances to the console
 
+  console.log(
+    "================================================================"
+  );
+
+  // Check LP token balance before and after the transaction
+  const lpBalBefore = await IERC20.balanceOf(impersonatedSigner.address);
+  console.log("LP Token Balance before:", Number(lpBalBefore));
+
   const tx = await ROUTER.addLiquidity(
     USDCAddress,
     DAIAddress,
@@ -89,18 +93,26 @@ const main = async () => {
   const daiBalAfter = await DAI.balanceOf(impersonatedSigner.address);
   // These lines check the balance of USDC and DAI after adding liquidity
 
+  console.log(
+    "================================================================"
+  );
+
   console.log("USDC Balance after adding liquidity:", Number(usdcBalAfter));
   console.log("DAI Balance after adding liquidity:", Number(daiBalAfter));
   // These log the new balances to the console
 
+  console.log(
+    "================================================================"
+  );
   // Check LP token balance after adding liquidity
   const lpBalAfter = await IERC20.balanceOf(impersonatedSigner.address);
   console.log("LP Token Balance after:", Number(lpBalAfter));
 
-
+  console.log(
+    "================================================================"
+  );
   console.log("Liquidity added successfully!");
   // This logs a success message
-
 };
 
 main().catch((error) => {
