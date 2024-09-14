@@ -21,7 +21,7 @@ const main = async () => {
   const impersonatedSigner = await ethers.getSigner(USDCHolder);
   // This gets a signer object for the impersonated account, which can sign transactions
 
-  const IERC20 = await ethers.getContractAt(
+  const LP = await ethers.getContractAt(
     "IERC20",
     USDC_DAI_PAIR,
     impersonatedSigner
@@ -71,7 +71,7 @@ const main = async () => {
   );
 
   // Check LP token balance before and after the transaction
-  const lpBalBefore = await IERC20.balanceOf(impersonatedSigner.address);
+  const lpBalBefore = await LP.balanceOf(impersonatedSigner.address);
   console.log("LP Token Balance before:", Number(lpBalBefore));
 
   const tx = await ROUTER.addLiquidity(
@@ -105,7 +105,7 @@ const main = async () => {
     "================================================================"
   );
   // Check LP token balance after adding liquidity
-  const lpBalAfter = await IERC20.balanceOf(impersonatedSigner.address);
+  const lpBalAfter = await LP.balanceOf(impersonatedSigner.address);
   console.log("LP Token Balance after:", Number(lpBalAfter));
 
   console.log(
