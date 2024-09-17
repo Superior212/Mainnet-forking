@@ -38,7 +38,7 @@ describe("UseSwap", function () {
         USDC,
         impersonatedSigner
       );
-      const bal = USDC_Contract.balanceOf(TOKEN_HOLDER);
+      const bal = await USDC_Contract.balanceOf(TOKEN_HOLDER);
       console.log("Balance: ", bal);
 
       const DAI_Contract = await hre.ethers.getContractAt("IERC20", DAI);
