@@ -29,7 +29,7 @@ contract SwapETHForExact {
             "Approve failed"
         );
 
-        uint[] memory amounts = IUniswapV2Router02(uniSwapRouter)
+        IUniswapV2Router02(uniSwapRouter)
             .swapExactTokensForTokens(
                 amountIn,
                 amountOutMin,
